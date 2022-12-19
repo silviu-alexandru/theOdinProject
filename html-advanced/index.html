@@ -3,87 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiments</title>
-    <script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href= "calculator.css"/>
+    <meta name="viewport" content="width=vh, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div id="mainDiv">
-        <div id="screen">
-            <div id="historyScreen">123654</div>
-            <div id="mainScreen">
-                <div id="inOutScreen"></div>
-                <div id="opScreen"></div>
-            </div>
-        </div>
-        <div id="buttons">
-            <table id="digits">
-                <tr>
-                    <td>
-                        <div id="digit-7" class="digit">7</div>
-                    </td>
-                    <td>
-                        <div id="digit-8" class="digit">8</div>
-                    </td>
-                    <td>
-                        <div id="digit-9" class="digit">9</div>
-                    </td>
+    <div class="square">
+        <span>Square</span>
+        <progress id="progress" max="100" value="50">Progress</progress>
 
-                </tr>
-                <tr>
-                    <td>
-                        <div id="digit-4" class="digit">4</div>
-                    </td>
-                    <td>                        
-                        <div id="digit-5" class="digit">5</div>
-                    </td>                    
-                    <td>                        
-                        <div id="digit-6" class="digit">6</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="digit-1" class="digit">1</div>
-                    </td>
-                    <td>
-                        <div id="digit-2" class="digit">2</div>
-                    </td>
-                    <td>
-                        <div id="digit-3" class="digit">3</div>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="digit-back" class="digit">&#129044;</div>
-                    </td>
-                    <td>
-                        <div id="digit-0" class="digit">0</div>
-                    </td>
-                    <td>
-                        <div id="digit-point" class="digit">.</div>
-                    </td>
-                </tr>
-            </table>
-            <div id="operations">
-                <div id="divide" class="opperand">/</div>
-                <div id="multiply" class="opperand">*</div>
-                <div id="minus" class="opperand">-</div>
-                <div id="plus" class="opperand">+</div>
-            </div>
-
-        </div>
-        <div id="actionBtns">
-            <div id="clear" class="act">C</div>
-            <div id="equal" class="act">=</div>
-        </div>
 
     </div>
-
-    
-    <script type="text/javascript" src="calculator.js"></script>
-
 </body>
 </html>

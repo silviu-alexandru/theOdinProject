@@ -1,0 +1,21 @@
+.square {
+    padding: 25px;
+    margin: 23px;
+    background: content-box yellowgreen;
+    border: double 3px lightcoral;
+    box-shadow: 6px 6px 6px 6px olive;
+    width: 500px;
+    height: 500px;
+    border-radius: 15%;
+    text-align: center;
+    vertical-align: bottom;
+}
+.square:hover {
+    box-shadow: -6px 10px 8px 4px olivedrab;
+    
+}
+#progress {
+    accent-color: red;
+    place-self: center;
+    width: clamp(300px, 60%, 850px);
+}
