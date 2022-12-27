@@ -125,7 +125,7 @@ fieldset input::placeholder {
     font-size: 1rem;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 900px){
     #main {
         flex-direction: column;
         max-width: 100vw;
@@ -145,7 +145,7 @@ fieldset input::placeholder {
         flex-direction: row;
         max-height: 4rem;
         margin: auto;
-        margin-top: 25%;
+        margin-top: 15%;
         justify-content: center;
     }
     #main-form {
