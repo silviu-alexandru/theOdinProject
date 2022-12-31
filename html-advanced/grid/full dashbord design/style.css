@@ -204,14 +204,14 @@ h3 {
     display: grid;    
     gap: 0.5rem;
     background-color: #f7fee7;    
-    grid-template-columns: 0.5rem 1fr;
+    grid-template-columns: 0.55rem 1fr;
     box-shadow: 0.2rem 0.2rem 0.2rem #365314/*#d9f99d*/;
     border-radius: 10px;
     box-sizing: content-box;
 
 }
 .bar{
-    background-color: #dc2626;
+    background-color: #701a75;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
