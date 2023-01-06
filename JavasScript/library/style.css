@@ -161,13 +161,13 @@ fieldset input {
     margin-left: 70%;
     box-shadow: 3px 3px 6px 0px #CCDBE8 inset, -3px -3px 6px 1px rgba(255,255,255,0.5) inset;
     background-image: url('./book.svg');
-    background-color: grey;
+    background-color: #d1d5db;
     background-repeat: no-repeat;
     cursor: pointer;
 }
 .read{
     background-image: url('./book-check.svg');
-    background-color: green;
+ /*    background-color: green; */
     background-repeat: no-repeat;
 
 }
