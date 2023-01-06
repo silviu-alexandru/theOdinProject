@@ -60,7 +60,8 @@ function loadBooks() {
 }
 
 const newBookForm = document.getElementById('newBookForm');
-newBookForm.addEventListener('submit', addBookToLibrary)
+newBookForm.addEventListener('submit', addBookToLibrary);
+newBookForm.addEventListener('click', clickCose);
 
 /* newBookBtn.addEventListener('click', ()=>{
     let title = ''; 
@@ -107,5 +108,10 @@ function openForm() {
 function closeForm() {
     document.getElementById("newBookForm").style.display = "none";
 }
-
+function clickCose(ev) {
+    console.log(ev.target.id);
+    if (ev.target.id == 'newBookForm'){
+        closeForm();
+    }
+}
 loadBooks();
