@@ -1,0 +1,21 @@
+#gameTable, .tableDiv {
+    border: 1px black solid;
+}
+#gameTable {
+    display: grid;
+    gap: 2px;
+    scale:1;
+    width: 250px;
+    height: 250px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+}
+.tableDiv {
+    
+}
+#r2c2 {
+    background-image: url("./close.svg");
+}
+#r1c1 {
+    background-image: url("./checkbox-blank-circle-outline.svg");
+}
