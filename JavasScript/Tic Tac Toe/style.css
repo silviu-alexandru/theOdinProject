@@ -1,0 +1,130 @@
+body {
+    font-size: medium;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+
+}
+#main {
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+    width: 70%;
+}
+.font-fam-set, .font-size-set {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: medium;
+}
+.round-shadow {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    border-radius: 8px;
+    border: none;
+}
+.tableDiv {
+    border: 1px black solid;
+}
+#gameTable {
+    display: grid;
+    margin: 1rem auto;
+    gap: 2px;
+    scale:1;
+    width: 250px;
+    height: 250px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+#message-area {
+    margin: 1rem auto;
+    width: 30rem;
+    height: 10rem;
+    text-align: left;
+}
+#messages {
+    padding: 0 0.5rem;
+    margin: 0.5rem;
+    white-space: pre-wrap;
+}
+#controls {
+    margin: 3rem auto;
+    gap: 2px;
+    scale:1;
+    width: max-content;
+    height: max-content;    
+/*     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+ */}
+ #buttons {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2rem;
+ }
+.btn {
+    height: 3rem;
+    width: 12rem;
+    font-size: medium;
+    background-color: #17202E;
+    color: #e5e5e5;
+}   
+.btn:hover {
+    filter: brightness(80%);
+    cursor: pointer;
+    font-size: 105%;
+}
+.win {
+    background-color: yellowgreen;
+}
+.marked-1 {
+    background-image: url("./close.svg");
+    background-size: 110%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.marked-2{
+    background-image: url("./checkbox-blank-circle-outline.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#players {
+    display: grid;
+    width: max-content;
+    grid-template-columns: max-content max-content;
+    gap: 2rem;
+    margin: 2rem auto;
+}
+.player {
+    margin: 1rem;
+    padding: 1rem;
+    display: grid;
+    /*     border: 1px solid ; */
+    gap: 1rem;
+    grid-auto-rows: 1.5rem;
+    grid-template-columns: max-content;
+}
+.player input {
+/*     height: 2rem; */
+    font-size: medium;
+}
+.player select {
+    width: 100%;
+    font-size: medium;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    border: none;
+}
+.player-name input {
+    border-radius: 4px;
+    text-indent: 0.2rem;
+    outline: none;
+}
+.player-mark {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+.player-mark span {
+/*     padding-top: 4.0%; */
+    text-indent: 0.3rem;
+}
+.active-player {
+    border: yellowgreen 5px solid;
+}

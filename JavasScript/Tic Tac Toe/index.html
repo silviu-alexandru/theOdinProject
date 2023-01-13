@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js" defer></script>
+</head>
+<body>
+    <div id="main">
+        <h2>Tic Tac Toe</h2>
+        <div id="players">
+            <div id="player-1" class="player round-shadow">
+                <div class="player-name">
+                    <input 
+                        class="font-fam-set font-size-set round-shadow"
+                        type="text" 
+                        name="name-1" 
+                        id="name-1"
+                        placeholder="Player-1"
+                    >
+                </div>
+                <div class="player-type">
+                    <select 
+                        class="font-fam-set font-size-set"
+                        name="select-type-p1" 
+                        id="select-type-p1" 
+                        disabled="disabled"
+                    >
+                            <option value="human" selected>Human</option>
+                            <option value="cpu">Computer</option>
+                    </select>
+                </div>
+                <div class="player-mark round-shadow">
+                    <span>Player mark</span>
+                    <img src="./close.svg" alt="X">
+                </div>
+            </div>
+            <div id="player-2" class="player round-shadow">
+                <div class="player-name">
+                    <input 
+                        class="font-fam-set font-size-set round-shadow"
+                        type="text" 
+                        name="name-2" 
+                        id="name-2"
+                        placeholder="Player-2"
+                    >
+                </div>
+                <div class="player-type">
+                    <select 
+                        class="font-fam-set font-size-set" 
+                        name="select-type-p2" 
+                        id="select-type-p2" 
+                        
+                    >
+                            <option value="human" selected>Human</option>
+                            <option value="cpu">Computer (unbeatable)</option>
+                    </select>
+                </div>
+                <div class="player-mark round-shadow">
+                    <span class="font-fam-set font-size-set">Player mark</span>
+                    <img src="./checkbox-blank-circle-outline.svg" alt="0">
+                </div>
+            </div>
+        </div>
+        <div id="controls">
+            <div id="buttons">
+                <button 
+                    type="reset" 
+                    class="btn font-fam-set font-size-set round-shadow" 
+                    id="restart-btn"
+                >Restart</button>
+                <button 
+                    type="reset" 
+                    class="btn font-fam-set font-size-set round-shadow" 
+                    id="reset-btn"
+                >Reset</button>
+            </div>
+        </div>
+        <div id="gameTable">
+            <div class="tableDiv row1 col1" id="r1c1"></div>
+            <div class="tableDiv row1 col2" id="r1c2"></div>
+            <div class="tableDiv row1 col3" id="r1c3"></div>
+            <div class="tableDiv row2 col1" id="r2c1"></div>
+            <div class="tableDiv row2 col2" id="r2c2"></div>
+            <div class="tableDiv row2 col3" id="r2c3"></div>
+            <div class="tableDiv row3 col1" id="r3c1"></div>
+            <div class="tableDiv row3 col2" id="r3c2"></div>
+            <div class="tableDiv row3 col3" id="r3c3"></div>
+        </div>
+        <div id="message-area" class="font-fam-set font-size-set round-shadow">
+            <p id="messages">Game started.</p>
+        </div>
+    </div>
+</body>
+</html>
