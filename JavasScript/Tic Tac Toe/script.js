@@ -285,13 +285,16 @@ const robot = (() => {
     const cpuMove = (playerNo) => {
         if (playerNo == cpuPlayerNo) {
             console.log('cpuMove fireing..');
+            let evaluate = []
             for (const key in lines) {
                 if (Object.hasOwnProperty.call(lines, key)) {
                     const line = lines[key];
+                    //line.priority = [[],[]];
+                    let priority = [[],[]];
+
                     if (!line.tie) {
-                        //let cpuCells = 0;
-                        //let playerCells = 0;
-                        line.priority = [];
+                        let cpuCells = 0;
+                        let playerCells = 0;
                         line.cells.forEach(element => {
                             let id = element.id;
                             let score = [0,0];
@@ -299,16 +302,21 @@ const robot = (() => {
                                 let ref = element.className.match(/marked-\d/)
                                 if (ref ==   `marked-${cpuPlayerNo}`) {
                                     score[0] = 1
-                                    //cpuCells++
+                                    cpuCells++
                                 }else {
-                                    //playerCells++
+                                    playerCells++
                                     score[1] = 1
                                 }
                             }
-                            line.priority.push([id, score])
+                            priority[1].push([id, score])
+                            //line.priority[1].push([id, score])
+                            //priority[1].push([id, score])
+                            //line.priority[1].push([id, score])
                         });
-                        //line.priority = [cpuCells, playerCells]
-                        console.log(line.priority);
+                        priority[0] = [cpuCells, playerCells]
+                        evaluate.push(priority)
+                        //line.priority[0] = [cpuCells, playerCells]
+                        console.log(priority);
 
 /*                         if (cpuCells > 1) {
                             line.priotity = 9;
@@ -330,3 +338,34 @@ const robot = (() => {
     cpuMove("2");
     gameEvents.subscribe('nextPlayer', cpuMove );
 })()
+/*
+[
+    [
+        0,
+        2
+    ],
+    [
+        [
+            "r1c3",
+            [
+                0,
+                0
+            ]
+        ],
+        [
+            "r2c2",
+            [
+                0,
+                1
+            ]
+        ],
+        [
+            "r3c1",
+            [
+                0,
+                1
+            ]
+        ]
+    ]
+]
+*/
