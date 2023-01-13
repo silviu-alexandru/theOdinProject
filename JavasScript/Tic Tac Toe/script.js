@@ -48,30 +48,6 @@ const init = (() => {
 
     players[0].classList.add('active-player');
 
-/*     const playerMaker = (aNumber, aName = '') =>{
-        let name = aName;
-        let number = aNumber;
-        const changeName = function(newName) {
-            this.name = newName;
-        }
-        return {number, name, changeName}
-    }
-
-    //createPlayers
-    const player1 = playerMaker('1', '');
-    const palyer2 = playerMaker('2', '');
-    let names = [...document.querySelectorAll('#name-1, #name-2')];
-    console.log(names);
-    names.forEach(element => {
-        element.addEventListener('change', (e) =>{
-            player1.changeName = e.target.textContent
-        })        
-    });
-    return {
-        player1,
-        palyer2,
-
-    } */
 })()
 
 const game = (()=>{
@@ -113,7 +89,6 @@ const game = (()=>{
                 }                
             }
         }
-        console.log("emit continue");
         gameEvents.emit('continue')
     }
     const checkForTie = () => {
@@ -125,9 +100,7 @@ const game = (()=>{
                 }
             }
         }
-        console.log("emit tie");
         gameEvents.emit("tie");
-        //writeMsg("Tie.Game Ended");
     }
     const celebrate = (cells) => {
         
@@ -140,8 +113,6 @@ const game = (()=>{
         
     }
     const gameEnded = (win) => {
-        //removeEventListener('click', game.markCell)
-        console.log(win);
         if (!win) {
 
             messageBoard.textContent += "\n"+`Tie. No winner.` 
@@ -180,11 +151,7 @@ const game = (()=>{
     
 
     return {
-        markCell,
-        /*         
-        checkForTie,
-        celebrate,
-        nextPlayer, */
+        markCell
     }
 })()
 
@@ -226,8 +193,7 @@ const tableAction = (() =>{
     const clearTable = () => {
         tableDivs.forEach(tableDiv => {
             tableDiv.classList.remove('marked-1', 'marked-2', 'win')
-        });
-        
+        });        
     };
 
     const clearPlayersFields = ()=>{
@@ -262,110 +228,80 @@ const tableAction = (() =>{
     return {lines}
 })();
 
-
 const robot = (() => {
-    
-    /*     let index = Math.floor(Math.random()*10);
-    index = index > 8 ? index-8 : index;
-    console.log(index);
-    let cell = tableDivs[index];
-    if (!cell.className.match(/marked-/g)) {
-        cell.classList.add('marked-2')
-    } */
-    const cpuPlayerNo = "2"
-    
+    let cpuPlayerNo = "2"
+    const selectSecPlayer = document.getElementById('select-type-p2');
+    selectSecPlayer.addEventListener('change', ()=>{
+        if (selectSecPlayer.value == 'cpu') {
+            cpuPlayerNo = "2"
+        }else {
+            cpuPlayerNo = "0"
+        }
+    })
+        
     const lines = tableAction.lines;
-    console.log(lines);
-    const priotities = {
-        1: ['r2c2'],
-        2: ['r1c1', 'r1c3', 'r3c1', 'r3c3' ],
-        3: ['r1c2', 'r2c1', 'r2c3', 'r3c2'],
-    }
-    const linePriorities = {}
     const cpuMove = (playerNo) => {
         if (playerNo == cpuPlayerNo) {
-            console.log('cpuMove fireing..');
-            let evaluate = []
+            console.log('CPU thinking..');
             for (const key in lines) {
                 if (Object.hasOwnProperty.call(lines, key)) {
                     const line = lines[key];
-                    //line.priority = [[],[]];
-                    let priority = [[],[]];
+                    line.priority = 0;
 
                     if (!line.tie) {
                         let cpuCells = 0;
                         let playerCells = 0;
                         line.cells.forEach(element => {
-                            let id = element.id;
-                            let score = [0,0];
                             if (element.className.match(/marked-/g)) {
                                 let ref = element.className.match(/marked-\d/)
                                 if (ref ==   `marked-${cpuPlayerNo}`) {
-                                    score[0] = 1
                                     cpuCells++
                                 }else {
                                     playerCells++
-                                    score[1] = 1
                                 }
                             }
-                            priority[1].push([id, score])
-                            //line.priority[1].push([id, score])
-                            //priority[1].push([id, score])
-                            //line.priority[1].push([id, score])
                         });
-                        priority[0] = [cpuCells, playerCells]
-                        evaluate.push(priority)
-                        //line.priority[0] = [cpuCells, playerCells]
-                        console.log(priority);
-
-/*                         if (cpuCells > 1) {
-                            line.priotity = 9;
+                        if (cpuCells > 1) {
+                            line.priority = 9;
                         }else if (playerCells > 1) {
-                            line.priotity = 8;
+                            line.priority = 8;
                         }else if (cpuCells > 0) {
-                            line.priotity = 7;
+                            line.priority = 7;
                         }else if (playerCells > 0){
-                            line.priotity = 6;
+                            line.priority = 6;
                         } else {
-                            line.priotity = 5;
-                        } */
-                    }
-                    
+                            line.priority = 5;
+                        }
+                    }                    
                 }
             }
+            cpuEval(lines);
         }
     }
-    cpuMove("2");
+    const cpuEval = (lines)=>{
+        let greatest = lines.diag1;
+        for (const key in lines) {
+            if (Object.hasOwnProperty.call(lines, key)) {
+                const line = lines[key];
+
+                if (!line.tie) {
+                    if (line.priority > greatest.priority){
+                        greatest = line;
+                    }                    
+                }                    
+            }
+        }
+        cpuMark(greatest.cells)
+    }
+    const cpuMark = (lineArray) =>{
+        if (!lineArray[0].className.match(/marked-/g)) {
+            lineArray[0].classList.add(`marked-${cpuPlayerNo}`);
+        }else if (!lineArray[2].className.match(/marked-/g)) {
+            lineArray[2].classList.add(`marked-${cpuPlayerNo}`);
+        }else {
+            lineArray[1].classList.add(`marked-${cpuPlayerNo}`);
+        }
+        gameEvents.emit('marked');
+    }
     gameEvents.subscribe('nextPlayer', cpuMove );
 })()
-/*
-[
-    [
-        0,
-        2
-    ],
-    [
-        [
-            "r1c3",
-            [
-                0,
-                0
-            ]
-        ],
-        [
-            "r2c2",
-            [
-                0,
-                1
-            ]
-        ],
-        [
-            "r3c1",
-            [
-                0,
-                1
-            ]
-        ]
-    ]
-]
-*/
