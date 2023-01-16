@@ -3,6 +3,7 @@ const players = document.querySelectorAll('.player');
 let currentPlayer = '1';
 let messageBoard = document.getElementById('messages');
 messageBoard.textContent = 'Game started.'
+const tableCenter = document.getElementById('r2c2');
 
 const gameEvents = (()=>{
     const events = {};
@@ -199,9 +200,10 @@ const tableAction = (() =>{
     const clearPlayersFields = ()=>{
         let name1 = document.getElementById('name-1');
         let name2 = document.getElementById('name-2');
-        console.log(name1);
+        let setType2 = document.getElementById('select-type-p2');
         name1.value = '';
         name2.value = ''; 
+        setType2.value = 'human';
     }
 
     const initialActivePlayer = ()=>{
@@ -229,7 +231,7 @@ const tableAction = (() =>{
 })();
 
 const robot = (() => {
-    let cpuPlayerNo = "2"
+    let cpuPlayerNo = "0"
     const selectSecPlayer = document.getElementById('select-type-p2');
     selectSecPlayer.addEventListener('change', ()=>{
         if (selectSecPlayer.value == 'cpu') {
@@ -285,21 +287,26 @@ const robot = (() => {
                 const line = lines[key];
 
                 if (!line.tie) {
-                    if (line.priority > greatest.priority){
+                    if (line.priority >= greatest.priority){
                         greatest = line;
                     }                    
                 }                    
             }
         }
-        cpuMark(greatest.cells)
+        cpuMark(greatest.cells, greatest.priority);
     }
-    const cpuMark = (lineArray) =>{
-        if (!lineArray[0].className.match(/marked-/g)) {
-            lineArray[0].classList.add(`marked-${cpuPlayerNo}`);
-        }else if (!lineArray[2].className.match(/marked-/g)) {
-            lineArray[2].classList.add(`marked-${cpuPlayerNo}`);
+    const cpuMark = (lineArray, priority) =>{
+        //console.log(lineArray[1].id, {lineArray}, priority);
+        if (priority == 6 && !tableCenter.className.match(/marked-/g)) {
+            tableCenter.classList.add(`marked-${cpuPlayerNo}`);
         }else {
-            lineArray[1].classList.add(`marked-${cpuPlayerNo}`);
+            if (!lineArray[0].className.match(/marked-/g)) {
+                lineArray[0].classList.add(`marked-${cpuPlayerNo}`);
+            }else if (!lineArray[2].className.match(/marked-/g)) {
+                lineArray[2].classList.add(`marked-${cpuPlayerNo}`);
+            }else {
+                lineArray[1].classList.add(`marked-${cpuPlayerNo}`);
+            }
         }
         gameEvents.emit('marked');
     }
